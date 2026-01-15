@@ -1,0 +1,28 @@
+// Best Time to Buy and Sell Stock
+// link: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+// DETERMINE MAX PROFIT 
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int maxProfit = 0;  //set maxprofit is zero
+        int bestbuy = prices[0];  // set first element is bestbuy
+        int n = prices.size();   // determine array size
+
+        for(int i=1 ; i<n; i++)
+        {
+            if(prices[i]> bestbuy)
+            {
+                maxProfit = max(maxProfit, prices[i]-bestbuy);
+            }
+            bestbuy = min(bestbuy,prices[i]);
+        }
+        return maxProfit;
+        
+    }
+};
+
+// Example 1:
+
+//Input: prices = [7,1,5,3,6,4]
+//Output: 5
